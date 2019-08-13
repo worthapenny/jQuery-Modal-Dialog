@@ -34,4 +34,5 @@ $("#btn-no-outside-click").on("click", function () {
 ```
 
 **Examples**
+
 ![Example Images](images/example.png "Example of dialog boxes")
