@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <title>Example of Modal Dialog</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+    <!--[if lt IE 9]>
+    <script src=""></script>
+    <![endif]-->
+
+    <!-- Boostrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Font-Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+
+</head>
+
+<body>
+  
+    <!-- jQuery  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- bootstrap -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <script src="js/modal-dialog.js"></script>
+
+    <!-- Quick Test -->
+
+    <!-- Button 1 -->
+    <div class="btn btn-primary m-5" id="btn-no-outside-click">
+        <i class="fa fa-check mr-3"></i>
+        Can't Click Outside
+    </div>
+
+    <!-- Button 2 -->
+    <div class="btn btn-primary m-5" id="btn-outside-click">
+        <i class="fa fa-surprise mr-3"></i>
+        Click Outside to close
+    </div>
+
+    <!-- Button 3 -->
+    <div class="btn btn-primary m-5" id="btn-secondary-show">
+        <i class="fa fa-smile mr-3"></i>
+        With Secondary Button
+    </div>
+
+    <!-- Button 4 -->
+    <div class="btn btn-danger m-5" id="error-dialog">
+        <i class="fa fa-smile mr-3"></i>
+        With light red background
+    </div>
+
+    <script>
+        // Button 1
+        $("#btn-no-outside-click").on("click", function () {
+            $.ModalDialog({
+                "title": "Heading/Title",
+                "primary_button_text": "Alight",
+                "modal_body": "You can not click outside to close this dialog",
+                "easy_close": false
+            })
+        })
+
+        // Button 2
+        $("#btn-outside-click").on("click", function () {
+            $.ModalDialog({
+                "title": "Heading/Title",
+                "primary_button_text": "Alight",
+                "modal_body": "You can click outside to close this dialog. <br> Set easy_close to true.",
+                "easy_close": true
+            })
+        })
+
+        // Button 3
+        $("#btn-secondary-show").on("click", function () {
+            let md = $.ModalDialog({
+                "header_class": "bg-dark",
+                "title": "Heading/Title",
+                "title_class": "text-white",
+                "primary_button_text": "Alight",
+                "primary_button_class": "btn-info",
+                "primary_fa": "smile",
+                "secondary_button_text": "Cancel",
+                "secondary_button_class": "bg-danger",
+                "secondary_fa": "yin-yang",
+                "modal_body": "You can click outside to close this dialog.",
+                "easy_close": true,
+            });
+
+            md.on('js.modal.primary.button.click', function () {
+                alert('You clicked on the primary button.');
+            });
+
+            md.on('js.modal.secondary.button.click', function () {
+                alert('You clicked on the secondary button.');
+            });
+        })
+
+        // Button 4
+        $("#error-dialog").on("click", function () {
+            $.ModalDialog({
+                "header_class": "alert-danger",
+                "title": "Heading/Title",
+                "primary_button_text": "Alight",
+                "modal_body": "You can click outside to close this dialog. <br> Set easy_close to true.",
+                "modal_body_class": "alert-danger",
+                "footer_class": "alert-danger",
+                "easy_close": true
+            })
+        })
+
+    </script>
+
+
+
+
+</body>
+
+</html>
