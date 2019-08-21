@@ -5,9 +5,12 @@
     $.ModalDialog = function (options) {
         options = $.extend({}, defaults, options)
 
-        let easyCloseString = "";
+        let easyCloseString = "",
+            easyCloseClass = "close";
+        
         if (!options.easy_close) {
             easyCloseString = "data-keyboard='false' data-backdrop='static'";
+            easyCloseClass = "close d-none";
         }
 
         let modal = $([
@@ -18,7 +21,7 @@
             "                <h6 class='modal-title ", options.title_class , "'>",
             options.title,
             "                </h6>",
-            "                <button type='button' class='close' data-dismiss='modal'>",
+            "                <button type='button' class='", easyCloseClass ,"' id='modal-dialog-close' data-dismiss='modal'>",
             "                    <span aria-hidden='true'>&times;</span>",
             "                    <span class='sr-only'>",
             options.close_button_text,
